@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
     summ = 0
     cnt = 0
-    for i in range(10):
+    for i in range(len(A)):
         if 2 < A[i] < 20 and A[i] % 8 == 0:
             summ += A[i]
             cnt += 1

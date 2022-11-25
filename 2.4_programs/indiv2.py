@@ -23,6 +23,7 @@ if __name__ == '__main__':
     B = float(input("Введите правую границу: "))
     print(
         f"Элементы, удовлетворяющие [{A} , {B}] >>",
+        # Выводим отфильтрованный список, подходящих под границы элементов
         list(filter(lambda item: item >= A and item <= B, mas))
     )
     print(
@@ -31,11 +32,12 @@ if __name__ == '__main__':
     )
 
     i_max = mas.index(max(mas))
+    # Взяв индекс максимального элемента, делаем срез
     print(
         "Сумма чисел списка, начиная от максимального значения: ",
         sum(mas[i_max:len(mas)])
     )
-    print(
-        "Отсортированный по убыванию модулей исходный список: ",
-        sorted(mas, key=abs, reverse=True)
-    )
+    print("Отсортированный по убыванию модулей исходный список: ")
+    mas.sort(key=abs, reverse=True)
+    print(mas)
+    #print(sorted(mas, key=abs, reverse=True))

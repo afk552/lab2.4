@@ -15,9 +15,10 @@ if __name__ == '__main__':
 
     summ = 0
     cnt = 0
-    for i in range(len(A)):
+    for i, elem in enumerate(A):
         if 2 < A[i] < 20 and A[i] % 8 == 0:
-            summ += A[i]
+            summ += elem
             cnt += 1
-    print("Сумма элементов, подходящих под условие: ", summ)
+            print(elem, end=" ")
+    print("\nСумма элементов, подходящих под условие: ", summ)
     print("Количество элементов, подходящих под условие: ", cnt)

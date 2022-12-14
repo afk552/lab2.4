@@ -6,12 +6,13 @@ import random
 
 if __name__ == '__main__':
     option = str(input(
-        "Введите, как заполнить массив: \"Вручную\" или \"Автоматически\"\n"))
+        "Введите, как заполнить список: \"Вручную\" или \"Автоматически\"\n"))
     mas = []
     if option.lower() == "вручную":
         mas = list(map(float, input("Введите числа через пробел: ").split()))
     else:
         amount = int(input("Введите количество чисел: "))
+        # Заполнение списка рандомными дробными значениями
         mas = [round(random.uniform(-100.9, 300.9), 2) for i in range(amount)]
     if not mas:
         print("Заданный список пуст", file=sys.stderr)
@@ -40,4 +41,3 @@ if __name__ == '__main__':
     print("Отсортированный по убыванию модулей исходный список: ")
     mas.sort(key=abs, reverse=True)
     print(mas)
-    #print(sorted(mas, key=abs, reverse=True))

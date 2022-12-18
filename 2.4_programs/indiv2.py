@@ -5,39 +5,37 @@ import sys
 import random
 
 if __name__ == '__main__':
-    option = str(input(
-        "Введите, как заполнить список: \"Вручную\" или \"Автоматически\"\n"))
-    mas = []
+    option = input("Как заполнить список? ""'Вручную' или 'Автоматически': ")
+    lst = []
     if option.lower() == "вручную":
-        mas = list(map(float, input("Введите числа через пробел: ").split()))
+        lst = list(map(float, input("Введите числа через пробел : ").split()))
     else:
         amount = int(input("Введите количество чисел: "))
         # Заполнение списка рандомными дробными значениями
-        mas = [round(random.uniform(-100.9, 300.9), 2) for i in range(amount)]
-    if not mas:
+        lst = [round(random.uniform(-100.9, 300.9), 2) for i in range(amount)]
+    if not lst:
         print("Заданный список пуст", file=sys.stderr)
         exit(1)
     else:
-        print("Введенные значения: ", *mas, "\n")
+        print("Введенные значения: ", *lst, "\n")
 
     A = float(input("Введите левую границу: "))
     B = float(input("Введите правую границу: "))
-    print(
-        f"Элементы, удовлетворяющие [{A} , {B}] >>",
-        # Выводим отфильтрованный список, подходящих под границы элементов
-        list(filter(lambda item: item >= A and item <= B, mas))
-    )
-    print(
-        "Количество элементов, удовлетворяющие условию: ",
-        (len(list(filter(lambda item: item >= A and item <= B, mas))))
-    )
+    if A > B:
+        A, B = B, A
+        print("A > B, A и B были изменены местами!")
+    print(f"Элементы, удовлетворяющие [{A} , {B}] >>",
+          list(filter(lambda item: item >= A and item <= B, lst))
+          )
+    print("Количество элементов, удовлетворяющие условию: ",
+          len(list(filter(lambda item: item >= A and item <= B, lst)))
+          )
 
-    i_max = mas.index(max(mas))
+    i_max = lst.index(max(lst))
     # Взяв индекс максимального элемента, делаем срез
-    print(
-        "Сумма чисел списка, начиная от максимального значения: ",
-        sum(mas[i_max:len(mas)])
-    )
+    print("Сумма чисел списка, начиная от максимального значения: ",
+          sum(lst[i_max:len(lst)])
+          )
     print("Отсортированный по убыванию модулей исходный список: ")
-    mas.sort(key=abs, reverse=True)
-    print(mas)
+    lst.sort(key=abs, reverse=True)
+    print(lst)

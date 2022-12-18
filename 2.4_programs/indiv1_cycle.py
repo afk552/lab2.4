@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import sys
+
 if __name__ == '__main__':
-    option = str(input(
-        "Введите, как заполнить список: \"Вручную\" или \"Автоматически\"\n"))
+    option = input("Как заполнить список? ""'Вручную' или 'Автоматически': ")
     A = []
     if option.lower() == "вручную":
         print("Введите 10 чисел (Каждое на отдельной строке): ")
@@ -11,7 +12,11 @@ if __name__ == '__main__':
             A.append(int(input()))
     else:
         A = [3, 21, 6, 8, 2, 1, 19, 20, 4, 16]
-    print("Введенные значения: ", *A, "\n")
+    if not A:
+        print("Заданный список пуст", file=sys.stderr)
+        exit(1)
+    else:
+        print("Введенные значения: ", *A, "\n")
 
     summ = 0
     cnt = 0
